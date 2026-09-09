@@ -100,7 +100,7 @@ Products with more reviews consistently showed higher purchase activity. The cor
 Ratings showed a moderate relationship as well (**correlation ≈ 0.27**). High-demand products had a median rating of **4.7**, versus **4.5** for the rest.
 
 <p align="center">
-  <img src="assets/rating_distribution.png" alt="Distribution of Product Ratings" width="650">
+  <img src="assests/rating_distribution.png" alt="Distribution of Product Ratings" width="650">
 </p>
 
 ### Price
