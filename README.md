@@ -55,7 +55,7 @@ The notebook covers:
 
 ## Key Findings
 
-### Product categories
+### Product Categories
 
 **Power & Batteries** had the strongest purchase activity among the categories analyzed, with a median of around **1,000 purchases in the last month**.
 
@@ -63,7 +63,7 @@ The notebook covers:
 
 Some larger categories, such as Phones and Laptops, had lower median purchase activity despite having many more listings.
 
-### Reviews and purchases
+### Reviews and Purchases
 
 Products with more reviews generally showed higher purchase activity.
 
@@ -92,7 +92,7 @@ When products were divided into four price groups based on discounted price:
 
 This suggests that price is an important factor associated with purchase activity in this dataset.
 
-### Best Seller products
+### Best Seller Products
 
 Best Seller products showed substantially higher purchase activity than other listings.
 
@@ -111,7 +111,7 @@ Products with coupons had a median of approximately **700 purchases**, compared 
 
 This suggests that coupon availability is associated with higher purchase activity.
 
-### Sponsored listings
+### Sponsored Listings
 
 Sponsored listings had higher observed purchase activity than organic listings.
 
@@ -124,7 +124,7 @@ About **34% of sponsored listings** were classified as high-demand, compared wit
 
 This should be interpreted as an association rather than a causal effect, since products may be sponsored because they are already performing well.
 
-### High-demand products
+### High-Demand Products
 
 High-demand products were defined as products at or above the **90th percentile of purchases in the last month**.
 
@@ -159,3 +159,4 @@ amazon-product-sales-analysis/
 │
 ├── .gitattributes
 └── .gitignore
+
