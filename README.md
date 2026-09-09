@@ -56,7 +56,7 @@ The dataset contains **42,675 Amazon product listings**, spanning 15 categories,
 | **Other** | Delivery information, sustainability tags |
 
 <p align="center">
-  <img src="assets/products_by_category.png" alt="Number of Products by Category" width="700">
+  <img src="assests/products_by_category.png" alt="Number of Products by Category" width="700">
 </p>
 
 > Listing volume is dominated by broad categories like **Other Electronics**, **Laptops**, and **Phones** — but as the findings below show, listing volume doesn't necessarily translate into purchase activity.
