@@ -1,12 +1,37 @@
-# Amazon Product Sales Analysis
+# 🛒 Amazon Product Sales Analysis
 
-This project analyzes Amazon product listings to understand which product and listing characteristics are associated with higher purchase activity.
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
-The analysis looks at product categories, pricing, discounts, ratings, reviews, Best Seller status, coupons, sponsored listings, and other listing attributes.
+An exploratory data analysis of **42,675 Amazon product listings**, uncovering which product and listing characteristics — price, ratings, reviews, Best Seller badges, coupons, and sponsorship — are associated with higher purchase activity.
 
-## Business Questions
+---
 
-The analysis focuses on a few practical questions:
+## 📋 Table of Contents
+
+- [Business Questions](#-business-questions)
+- [Dataset](#-dataset)
+- [Analysis Workflow](#-analysis-workflow)
+- [Key Findings](#-key-findings)
+  - [Product Categories](#product-categories)
+  - [Reviews & Ratings](#reviews--ratings)
+  - [Price](#price)
+  - [Best Seller Products](#best-seller-products)
+  - [Coupons](#coupons)
+  - [Sponsored Listings](#sponsored-listings)
+  - [High-Demand Products](#high-demand-products)
+- [Correlation Overview](#-correlation-overview)
+- [Tools Used](#-tools-used)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+
+---
+
+## ❓ Business Questions
+
+This analysis was guided by a set of practical, business-relevant questions:
 
 - Which product categories have higher purchase activity?
 - Is there a relationship between ratings, reviews, and purchases?
@@ -16,72 +41,71 @@ The analysis focuses on a few practical questions:
 - How do sponsored and organic listings compare?
 - What characteristics are common among high-demand products?
 
-## Dataset
+---
 
-The dataset contains **42,675 Amazon product listings** with information about:
+## 📦 Dataset
 
-- Product title and category
-- Product rating
-- Number of reviews
-- Purchases in the last month
-- Original and discounted price
-- Discount percentage
-- Best Seller status
-- Sponsored status
-- Coupon availability
-- Buy Box availability
-- Delivery information
-- Sustainability tags
+The dataset contains **42,675 Amazon product listings**, spanning 15 categories, with details on:
 
-The dataset is stored in the `data/` folder.
+| Field Group | Includes |
+|---|---|
+| **Product Info** | Title, category, rating |
+| **Engagement** | Number of reviews, purchases in the last month |
+| **Pricing** | Original price, discounted price, discount % |
+| **Listing Signals** | Best Seller status, sponsored status, coupon availability, Buy Box availability |
+| **Other** | Delivery information, sustainability tags |
 
-## Analysis
+<p align="center">
+  <img src="assets/products_by_category.png" alt="Number of Products by Category" width="700">
+</p>
 
-The notebook covers:
+> Listing volume is dominated by broad categories like **Other Electronics**, **Laptops**, and **Phones** — but as the findings below show, listing volume doesn't necessarily translate into purchase activity.
 
-- Data cleaning and quality checks
-- Missing-value analysis
-- Duplicate checks
-- Distribution of ratings, prices, discounts, reviews, and purchases
-- Category-level analysis
-- Price and discount analysis
-- Relationship between reviews, ratings, and purchases
-- Best Seller comparison
-- Coupon analysis
-- Sponsored vs. organic listing analysis
-- High-demand product analysis
-- Statistical testing using the Mann–Whitney U test
-- Correlation analysis using log-transformed purchase data
+---
 
-## Key Findings
+## 🔍 Analysis Workflow
+
+The notebook walks through a complete EDA pipeline:
+
+1. **Data cleaning & quality checks** — missing values, duplicates
+2. **Distribution analysis** — ratings, prices, discounts, reviews, purchases
+3. **Category-level analysis** — purchase activity by product category
+4. **Price & discount analysis** — how pricing relates to demand
+5. **Relationship analysis** — reviews, ratings, and purchases
+6. **Best Seller comparison** — statistical testing with Mann–Whitney U
+7. **Coupon & sponsorship analysis**
+8. **High-demand product profiling** (90th percentile of purchases)
+9. **Correlation analysis** using log-transformed purchase data
+
+---
+
+## 📊 Key Findings
 
 ### Product Categories
 
-**Power & Batteries** had the strongest purchase activity among the categories analyzed, with a median of around **1,000 purchases in the last month**.
+**Power & Batteries** led all categories with a median of roughly **1,000 purchases** in the last month, followed by **Wearables** (~800 purchases). Notably, larger categories like **Phones** and **Laptops** had lower median purchase activity despite far higher listing counts.
 
-**Wearables** followed with a median of around **800 purchases**.
+<p align="center">
+  <img src="assets/median_purchases_by_category.png" alt="Median Purchases by Product Category" width="700">
+</p>
 
-Some larger categories, such as Phones and Laptops, had lower median purchase activity despite having many more listings.
+### Reviews & Ratings
 
-### Reviews and Purchases
+Products with more reviews consistently showed higher purchase activity. The correlation between log-transformed reviews and log-transformed purchases was **~0.49** — one of the stronger relationships in the dataset.
 
-Products with more reviews generally showed higher purchase activity.
+<p align="center">
+  <img src="assets/reviews_vs_purchases.png" alt="Total Reviews vs Purchases in the Last Month" width="650">
+</p>
 
-The correlation between log-transformed reviews and log-transformed purchases was approximately **0.49**, making reviews one of the stronger relationships observed in the dataset.
+Ratings showed a moderate relationship as well (**correlation ≈ 0.27**). High-demand products had a median rating of **4.7**, versus **4.5** for the rest.
 
-### Ratings
-
-Higher-rated products tended to have higher purchase activity.
-
-The correlation between rating and log-transformed purchases was approximately **0.27**.
-
-High-demand products had a median rating of **4.7**, compared with **4.5** for the remaining products.
+<p align="center">
+  <img src="assets/rating_distribution.png" alt="Distribution of Product Ratings" width="650">
+</p>
 
 ### Price
 
-Lower-priced products generally had higher purchase activity.
-
-When products were divided into four price groups based on discounted price:
+Lower-priced products drove substantially higher purchase activity. Splitting products into four price segments (by discounted price) shows a clear downward trend:
 
 | Price Segment | Median Purchases |
 |---|---:|
@@ -90,63 +114,75 @@ When products were divided into four price groups based on discounted price:
 | Mid-High Price | 100 |
 | High Price | 50 |
 
-This suggests that price is an important factor associated with purchase activity in this dataset.
+<p align="center">
+  <img src="assets/price_vs_purchases.png" alt="Discounted Price vs Purchases in the Last Month" width="650">
+</p>
 
 ### Best Seller Products
 
-Best Seller products showed substantially higher purchase activity than other listings.
+Best Seller listings showed **substantially higher** purchase activity than non-Best-Seller listings:
 
-The median log-transformed purchase value was approximately:
+- **Best Seller** — median log-purchases: **8.70**
+- **Not Best Seller** — median log-purchases: **5.30**
 
-- **Best Seller:** 8.70
-- **Not Best Seller:** 5.30
+A Mann–Whitney U test confirmed this difference is statistically significant (**p ≈ 1.12 × 10⁻¹⁰¹**). This is a strong *association* — not proof that the badge itself *causes* higher sales.
 
-A Mann–Whitney U test produced a p-value of approximately **1.12 × 10⁻¹⁰¹**, indicating a statistically significant difference between the two groups.
-
-The result shows a strong association, but it does not establish that receiving a Best Seller badge causes higher sales.
+<p align="center">
+  <img src="assets/bestseller_comparison.png" alt="Purchase Activity by Best Seller Status" width="600">
+</p>
 
 ### Coupons
 
-Products with coupons had a median of approximately **700 purchases**, compared with **200 purchases** for products without coupons.
-
-This suggests that coupon availability is associated with higher purchase activity.
+Products with a coupon had a median of **~700 purchases**, compared to **~200 purchases** for products without one — suggesting coupon availability is linked to stronger demand.
 
 ### Sponsored Listings
 
-Sponsored listings had higher observed purchase activity than organic listings.
+Sponsored listings out-performed organic listings on median purchases:
 
-The median purchases were approximately:
+- **Sponsored** — ~1,000 median purchases
+- **Organic** — ~200 median purchases
 
-- **Sponsored:** 1,000
-- **Organic:** 200
-
-About **34% of sponsored listings** were classified as high-demand, compared with approximately **6% of organic listings**.
-
-This should be interpreted as an association rather than a causal effect, since products may be sponsored because they are already performing well.
+About **34% of sponsored listings** qualified as high-demand, versus only **~6% of organic listings**. This is likely bidirectional — strong products may get sponsored *because* they already sell well, not purely the other way around.
 
 ### High-Demand Products
 
-High-demand products were defined as products at or above the **90th percentile of purchases in the last month**.
+High-demand products (≥ 90th percentile of monthly purchases) stood apart on nearly every metric:
 
-Compared with other products, high-demand products had:
+| Metric | High-Demand | Other Products |
+|---|---:|---:|
+| Median Rating | **4.7** | 4.5 |
+| Median Reviews | **5,045** | 288 |
+| Median Discounted Price | **$25.47** | $93.99 |
 
-- Median rating: **4.7 vs. 4.5**
-- Median reviews: **5,045 vs. 288**
-- Median discounted price: **$25.47 vs. $93.99**
+Best Seller products were also disproportionately represented in this group, and the effect is concentrated in specific categories:
 
-Best Seller products were also more represented among high-demand products.
+<p align="center">
+  <img src="assets/highdemand_by_category.png" alt="High-Demand Rate by Product Category" width="700">
+</p>
 
-## Tools Used
+---
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- SciPy
-- Jupyter Notebook
+## 🔗 Correlation Overview
 
-## Project Structure
+A full correlation heatmap across numeric features summarizes the relationships explored above — purchases correlate most strongly with reviews, and negatively with price:
+
+<p align="center">
+  <img src="assets/correlation_heatmap.png" alt="Correlation Heatmap of Numerical Features" width="650">
+</p>
+
+---
+
+## 🛠 Tools Used
+
+- **Python**
+- **Pandas** & **NumPy** — data wrangling
+- **Matplotlib** & **Seaborn** — visualization
+- **SciPy** — statistical testing (Mann–Whitney U)
+- **Jupyter Notebook** — analysis environment
+
+---
+
+## 📁 Project Structure
 
 ```text
 amazon-product-sales-analysis/
@@ -157,6 +193,30 @@ amazon-product-sales-analysis/
 ├── notebooks/
 │   └── Amazon_Product_Sales_Analysis.ipynb
 │
+├── assets/
+│   └── (charts used in this README)
+│
 ├── .gitattributes
-└── .gitignore
+├── .gitignore
+└── README.md
+```
 
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd amazon-product-sales-analysis
+
+# Install dependencies
+pip install pandas numpy matplotlib seaborn scipy jupyter
+
+# Launch the notebook
+jupyter notebook notebooks/Amazon_Product_Sales_Analysis.ipynb
+```
+
+---
+
+<p align="center"><i>All figures above are generated directly from the analysis notebook.</i></p>
