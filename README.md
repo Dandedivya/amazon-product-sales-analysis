@@ -86,7 +86,7 @@ The notebook walks through a complete EDA pipeline:
 **Power & Batteries** led all categories with a median of roughly **1,000 purchases** in the last month, followed by **Wearables** (~800 purchases). Notably, larger categories like **Phones** and **Laptops** had lower median purchase activity despite far higher listing counts.
 
 <p align="center">
-  <img src="assets/median_purchases_by_category.png" alt="Median Purchases by Product Category" width="700">
+  <img src="assests/median_purchases_by_category.png" alt="Median Purchases by Product Category" width="700">
 </p>
 
 ### Reviews & Ratings
@@ -94,7 +94,7 @@ The notebook walks through a complete EDA pipeline:
 Products with more reviews consistently showed higher purchase activity. The correlation between log-transformed reviews and log-transformed purchases was **~0.49** — one of the stronger relationships in the dataset.
 
 <p align="center">
-  <img src="assets/reviews_vs_purchases.png" alt="Total Reviews vs Purchases in the Last Month" width="650">
+  <img src="assests/reviews_vs_purchases.png" alt="Total Reviews vs Purchases in the Last Month" width="650">
 </p>
 
 Ratings showed a moderate relationship as well (**correlation ≈ 0.27**). High-demand products had a median rating of **4.7**, versus **4.5** for the rest.
@@ -115,7 +115,7 @@ Lower-priced products drove substantially higher purchase activity. Splitting pr
 | High Price | 50 |
 
 <p align="center">
-  <img src="assets/price_vs_purchases.png" alt="Discounted Price vs Purchases in the Last Month" width="650">
+  <img src="assests/price_vs_purchases.png" alt="Discounted Price vs Purchases in the Last Month" width="650">
 </p>
 
 ### Best Seller Products
@@ -128,7 +128,7 @@ Best Seller listings showed **substantially higher** purchase activity than non-
 A Mann–Whitney U test confirmed this difference is statistically significant (**p ≈ 1.12 × 10⁻¹⁰¹**). This is a strong *association* — not proof that the badge itself *causes* higher sales.
 
 <p align="center">
-  <img src="assets/bestseller_comparison.png" alt="Purchase Activity by Best Seller Status" width="600">
+  <img src="assests/bestseller_comparison.png" alt="Purchase Activity by Best Seller Status" width="600">
 </p>
 
 ### Coupons
@@ -157,7 +157,7 @@ High-demand products (≥ 90th percentile of monthly purchases) stood apart on n
 Best Seller products were also disproportionately represented in this group, and the effect is concentrated in specific categories:
 
 <p align="center">
-  <img src="assets/highdemand_by_category.png" alt="High-Demand Rate by Product Category" width="700">
+  <img src="assests/highdemand_by_category.png" alt="High-Demand Rate by Product Category" width="700">
 </p>
 
 ---
@@ -167,7 +167,7 @@ Best Seller products were also disproportionately represented in this group, and
 A full correlation heatmap across numeric features summarizes the relationships explored above — purchases correlate most strongly with reviews, and negatively with price:
 
 <p align="center">
-  <img src="assets/correlation_heatmap.png" alt="Correlation Heatmap of Numerical Features" width="650">
+  <img src="assests/correlation_heatmap.png" alt="Correlation Heatmap of Numerical Features" width="650">
 </p>
 
 ---
