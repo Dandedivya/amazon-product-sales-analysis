@@ -5,7 +5,7 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
-An end-to-end exploratory data analysis of 42,675 Amazon product listings, identifying product, pricing, engagement, and listing characteristics associated with higher purchase activity.
+An end-to-end exploratory data analysis of 42,675 Amazon product listings, identifying product, pricing, engagement, and listing characteristics associated with higher purchase activity. 
 ---
 
 ## 📋 Table of Contents
